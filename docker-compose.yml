@@ -11,9 +11,10 @@ services:
     environment:
       - DB_CONNECTION=mysql
       - DB_HOST=db
-      - DB_DATABASE=
-      - DB_USERNAME=
-      - DB_PASSWORD=
+      - DB_DATABASE=lara-test
+      - DB_USERNAME=user
+      - DB_PASSWORD=password
+      - DB_PORT=3307
   web:
     image: nginx:alpine
     ports:
@@ -25,3 +26,21 @@ services:
     command: /bin/sh -c "nginx -g 'daemon off;'"
     environment:
       TZ: Asia/Tokyo
+    depends_on:
+      - app
+  db:
+    build:
+      context: ./mariadb/
+    volumes:
+      # - db-store:/var/lib/mysql
+      - ./logs:/var/log/mysql
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_DATABASE=lara-test
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+
+# volumes:
+#   db-store:
