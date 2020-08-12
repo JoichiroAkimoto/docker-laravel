@@ -61,8 +61,6 @@ RUN docker-php-ext-install \
     mbstring \
     pdo \
     pdo_mysql \
-    pdo_pgsql \
-    pdo_sqlite \
     pcntl \
     tokenizer \
     xml \
@@ -76,6 +74,8 @@ RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/
 
 # Install PHP_CodeSniffer
 RUN composer global require "squizlabs/php_codesniffer=*"
+# composer(prestissimo)
+RUN composer global require hirak/prestissimo
 
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
