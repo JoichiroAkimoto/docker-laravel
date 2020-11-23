@@ -24,16 +24,14 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
 # Install php extensions
 RUN docker-php-ext-install bcmath calendar curl exif gd \
-    iconv intl mbstring pdo_mysql pcntl tokenizer xml zip
+    iconv intl mbstring pdo_mysql pcntl tokenizer xml zip opcache
 
 # Install composer
-ENV COMPOSER_HOME /composer
-ENV PATH ./vendor/bin:/composer/vendor/bin:$PATH
-ENV COMPOSER_ALLOW_SUPERUSER 1
-RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
-
-# composer(prestissimo)
-RUN composer global require hirak/prestissimo
+# ENV COMPOSER_HOME /composer
+# ENV PATH ./vendor/bin:/composer/vendor/bin:$PATH
+# ENV COMPOSER_ALLOW_SUPERUSER 1
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
