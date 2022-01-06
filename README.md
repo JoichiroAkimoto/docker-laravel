@@ -1,6 +1,4 @@
-# docker-laravel 🐳
-
-![License](https://img.shields.io/github/license/ucan-lab/docker-laravel?color=ffff00)
+# Project 🐳
 
 ## Introduction
 
@@ -9,8 +7,8 @@ Build a simple laravel development environment with docker-compose.
 ## Usage
 
 ```bash
-git clone https://github.com/JoichiroAkimoto/docker-laravel.git
-cd docker-laravel
+git clone this repository.
+cd 
 make create-project # Install the latest Laravel project
 make install-recommend-packages # Not required
 ```
@@ -19,7 +17,7 @@ Read this [Makefile](https://github.com/ucan-lab/docker-laravel/blob/master/Make
 
 ## Tips
 
-Read this [Wiki](https://github.com/ucan-lab/docker-laravel/wiki).
+Reference [Wiki](https://github.com/ucan-lab/docker-laravel/wiki).
 
 ## Container structure
 
@@ -31,7 +29,7 @@ Read this [Wiki](https://github.com/ucan-lab/docker-laravel/wiki).
 
 ### app container
 
-- [php:7.4-fpm-alpine](https://hub.docker.com/_/php)
+- [php:fpm-alpine](https://hub.docker.com/_/php)
 
 ### web container
 
@@ -49,3 +47,5 @@ If you want to delete MySQL data intentionally, execute the following command.
 ```bash
 docker-compose down -v && docker-compose up
 ```
+## License
+MIT

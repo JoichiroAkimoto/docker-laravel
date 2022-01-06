@@ -3,7 +3,7 @@ FROM mariadb
 COPY ./my.cnf /etc/mysql/conf.d/my.cnf
 RUN chmod 644 /etc/mysql/conf.d/my.cnf
 
-ENV MYSQL_DATABASE "lara-test"
+ENV MYSQL_DATABASE "db"
 ENV MYSQL_ALLOW_EMPTY_PASSWORD "yes"
 ENV MYSQL_USER "user"
 ENV MYSQL_PASSWORD "password"
